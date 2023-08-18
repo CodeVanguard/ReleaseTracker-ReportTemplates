@@ -1,0 +1,25 @@
+{{! This template recreates the behavior of v1 Public Markdown reports }}
+
+# {{release.Title}}
+
+{{#if newFeatures.length}}
+## Enhancements
+|Id|Title|
+|-|-|
+{{#each newFeatures}}
+{{#unless IsInternal}}
+|{{Id}}|{{{Title}}}|
+{{/unless}}
+{{/each}}
+{{/if}}
+
+{{#if improvements.length}}
+## Bug fixes
+|Id|Title|
+|-|-|
+{{#each improvements}}
+{{#unless IsInternal}}
+|{{Id}}|{{{Title}}}|
+{{/unless}}
+{{/each}}
+{{/if}}

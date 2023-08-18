@@ -1,0 +1,13 @@
+{{! This template recreates the behavior of v1 Public CSV reports }}
+Id,Type,Title,Assigned To,State
+{{#if newFeatures.length}}
+{{#each newFeatures}}
+"{{Id}}","{{ItemType}}","{{{escapeQuotesCsv Title}}}","{{AssignedTo.DisplayName}}","{{State}}"
+{{/each}}
+{{/if}}
+
+{{#if improvements.length}}
+{{#each improvements}}
+"{{Id}}","{{ItemType}}","{{{escapeQuotesCsv Title}}}","{{AssignedTo.DisplayName}}","{{State}}"
+{{/each}}
+{{/if}}

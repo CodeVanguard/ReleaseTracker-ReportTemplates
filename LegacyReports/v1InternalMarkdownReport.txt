@@ -1,0 +1,56 @@
+{{! This template recreates the behavior of v1 Internal Markdown reports }}
+
+{{#with release}}
+# [{{Title}}]({{getWorkItemLink}})
+{{/with}}
+
+## Summary
+| Steward | State | Total work items |
+|-|-|-|
+|{{release.AssignedTo.DisplayName}}|{{release.State}}|{{totalWorkItems}} work items|
+
+## Important Dates
+| | |
+|-|-|
+{{#if release.WorkStartDate}}
+|Work started|{{toLocaleDateString release.WorkStartDate}}|
+{{/if}}
+{{#if release.CodeFreezeDate}}
+|Code freeze|{{toLocaleDateString release.WorkStartDate}}|
+{{/if}}
+{{#if release.CodeFreezeDate}}
+|Target release|{{toLocaleDateString release.TargetReleaseDate}}|
+{{/if}}
+{{#if release.ActualReleaseDate}}
+|Actual release|{{toLocaleDateString release.ActualReleaseDate}}|
+{{/if}}
+{{#if release.EndOfSupportDate}}
+|End of support|{{toLocaleDateString release.EndOfSupportDate}}|
+{{/if}}
+
+{{#if newFeatures.length}}
+## Enhancements
+|Id|Type|Title|Assigned To|State|Priority|
+|-|-|-|-|-|-|
+{{#each newFeatures}}
+|[{{Id}}]({{getWorkItemLink}})|{{ItemType}}|{{{Title}}}|{{AssignedTo.DisplayName}}|{{State}}|{{Priority}}|
+{{/each}}
+{{/if}}
+
+{{#if improvements.length}}
+## Bug fixes
+|Id|Type|Title|Assigned To|State|Priority|
+|-|-|-|-|-|-|
+{{#each improvements}}
+|[{{Id}}]({{getWorkItemLink}})|{{ItemType}}|{{{Title}}}|{{AssignedTo.DisplayName}}|{{State}}|{{Priority}}|
+{{/each}}
+{{/if}}
+
+{{#if qaItems.length}}
+## QA
+|Id|Type|Title|Assigned To|State|
+|-|-|-|-|-|
+{{#each qaItems}}
+|[{{Id}}]({{getWorkItemLink}})|{{{Title}}}|{{AssignedTo.DisplayName}}|{{State}}|
+{{/each}}
+{{/if}}

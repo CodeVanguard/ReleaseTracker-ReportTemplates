@@ -1,0 +1,17 @@
+{{! This template recreates the behavior of v1 Public CSV reports }}
+Id,Title
+{{#if newFeatures.length}}
+{{#each newFeatures}}
+{{#unless IsInternal}}
+"{{Id}}","{{{escapeQuotesCsv Title}}}"
+{{/unless}}
+{{/each}}
+{{/if}}
+
+{{#if improvements.length}}
+{{#each improvements}}
+{{#unless IsInternal}}
+"{{Id}}","{{{escapeQuotesCsv Title}}}"
+{{/unless}}
+{{/each}}
+{{/if}}
